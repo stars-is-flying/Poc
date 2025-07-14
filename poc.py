@@ -19,7 +19,9 @@ exploit():(use this function performe the exploit and return a result!)
 check():  (use this function check the performence is successed!, use this function print the exploit result,exploit successded use the blue failed use the blue)
 '''
 
+from colorama import init, Fore, Style, Back
 
+init(autoreset=True)
 
 class Poc:
     def __init__(self):
@@ -41,14 +43,53 @@ class Poc:
         self.password = ""
         self.url = ""
         self.quary_word = ""
-        self.usage = ""
     
     
     def exploit(self):
         ...
     
     def check(self):
-        ...
+        code, message = self.exploit()
     
-    def log(self):
-        ...
+        # 定义漂亮的输出格式
+        border = "═" * 70
+        header = "╔" + border + "╗"
+        footer = "╚" + border + "╝"
+    
+        # 根据结果代码选择不同颜色
+        if code == 0:  # 成功 - 蓝色
+            color = Fore.BLUE + Style.BRIGHT
+            status = "漏洞利用成功!"
+            icon = "✔"
+        elif code == 1:  # 未成功 - 黄色
+            color = Fore.YELLOW + Style.BRIGHT
+            status = "执行完成但未成功"
+            icon = "⚠"
+        else:  # 错误 - 红色
+            color = Fore.RED + Style.BRIGHT
+            status = "执行失败"
+            icon = "✘"
+    
+        # 构建输出内容
+        output = f"""
+        {color}{header}
+        {color}║{icon}  {status.center(68)} ║
+        {color}║{'详细信息:'.center(70)}║
+        {color}║{message.center(70)}║
+        {color}{footer}
+            """
+    
+        print(output)
+    
+        # 额外添加彩色状态标签
+        status_tag = {
+            0: Back.BLUE + Fore.WHITE + " SUCCESS ",
+            1: Back.YELLOW + Fore.BLACK + " WARNING ",
+            -1: Back.RED + Fore.WHITE + " ERROR "
+        }[code]
+    
+        print(f"\n{status_tag}{Style.RESET_ALL} 状态代码: {code}")
+    
+        # 返回结果代码
+        return code
+    
