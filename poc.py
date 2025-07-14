@@ -16,8 +16,7 @@ poc base class **Poc**,include:
 
 Functions:
 exploit():(use this function performe the exploit and return a result!)
-check():  (use this function check the performence is successed!)
-log():    (use this function print the exploit result,exploit successded use the blue failed use the blue)
+check():  (use this function check the performence is successed!, use this function print the exploit result,exploit successded use the blue failed use the blue)
 '''
 
 
@@ -38,6 +37,8 @@ class Poc:
         self.remote_port = ""
         self.local_address = ""
         self.local_port = ""
+        self.username = ""
+        self.password = ""
         self.url = ""
         self.quary_word = ""
         self.usage = ""
