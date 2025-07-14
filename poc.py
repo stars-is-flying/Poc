@@ -43,11 +43,11 @@ class Poc:
         self.usage = ""
     
     
-    def exploit():
+    def exploit(self):
         ...
     
-    def check():
+    def check(self):
         ...
     
-    def log():
+    def log(self):
         ...
