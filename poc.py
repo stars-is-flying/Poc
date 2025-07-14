@@ -12,6 +12,7 @@ poc base class **Poc**,include:
 10.Interaction Method(Local exploit,Remote exploit)
 11.Remote-address,Remote-port,Local-address,Local-port,username,password,url
 12.Search Quary simple word(sql,injection,remote,xss,burp.........)
+13.Usage(Show how to use the script)
 
 Functions:
 exploit():(use this function performe the exploit and return a result!)
@@ -39,6 +40,7 @@ class Poc:
         self.local_port = ""
         self.url = ""
         self.quary_word = ""
+        self.usage = ""
     
     
     def exploit():
